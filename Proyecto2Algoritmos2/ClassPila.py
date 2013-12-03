@@ -44,5 +44,3 @@ class Pila(object):
             return self.tope.GetValor()
         else:
             return None
-
-"""yay"""
