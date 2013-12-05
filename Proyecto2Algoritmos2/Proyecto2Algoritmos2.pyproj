@@ -5,7 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>3025a8a7-3d30-463b-b6b7-1b988407f842</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>ClassEvento.py</StartupFile>
+    <StartupFile>ClassEstacionamiento.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>

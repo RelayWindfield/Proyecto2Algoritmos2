@@ -1,11 +1,10 @@
-class NodoCola(Object):
+class NodoCola(object):
 
     def __init__(self, valor):
         self.SetValor(valor)
         self.SetSiguiente(None)
-        self.SetAnterior(None)
 
-    def SetSiguente(self, nodo):
+    def SetSiguiente(self, nodo):
         self.siguiente = nodo
 
     def SetValor(self, valor):
@@ -17,7 +16,7 @@ class NodoCola(Object):
     def GetValor(self):
         return self.valor
 
-class Cola(Object):
+class Cola(object):
 
     def __init__(self):
         self.SetPrimero(None)
@@ -49,23 +48,12 @@ class Cola(Object):
             self.SetPrimero(aux)
             self.SetUltimo(aux)
         elif self.GetPrimero() != None:
-            self.GetUltimo().SetSiguente(aux)
+            self.GetUltimo().SetSiguiente(aux)
             self.SetUltimo(aux)
 
     def Desencolar(self):
         if self.GetPrimero() != None:
-            self.SetPrimero(Self.GetPrimero().GetSiguiente())
+            self.SetPrimero(self.GetPrimero().GetSiguiente())
 
-    def Primero(self):
-        return self.GetPrimeroValor()
-
-    def vacia(self):
+    def EsVacia(self):
         return self.GetPrimero() != None
-
-
-            
-
-
-
-
-

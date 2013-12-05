@@ -3,9 +3,12 @@ from ClassVehiculo import *
 
 class Tubo(Pila):
 
-    def __init__(self, capacidad):
+    EtiquetaT = -1
+
+    def __init__(self, capacidad, etiqueta = None):
         self.SetCapacidad(capacidad)
         self.SetOcupacion(0)
+        self.SetEtiqueta(etiqueta)
         super().__init__()
 
     def SetCapacidad(self, capacidad):
@@ -20,21 +23,34 @@ class Tubo(Pila):
     def GetOcupacion(self):
         return self.ocupacion
 
+    def SetEtiqueta(self, valor = None):
+        if valor == None:
+            Tubo.EtiquetaT += 1
+            self.etiqueta = Tubo.EtiquetaT
+        else:
+            self.etiqueta = valor
+
+    def GetEtiqueta(self):
+        return self.etiqueta
+
+    def GetEtiquetaT(self):
+        return Tubo.EtiquetaT
+
     def Estacionar(self, vehiculo):
         if self.Cabe(vehiculo) == True:
             self.Empilar(vehiculo)
-            self.SetOcupacion(self.GetOcupacion() + vehiculo.GetLongitud())
+            self.SetOcupacion(self.GetOcupacion() + float(vehiculo.GetLongitud()))
 
     def Retirar(self):
         if not(self.GetOcupacion == 0):
-            self.SetOcupacion(self.GetOcupacion() - self.GetTopeValor().GetLongitud())
+            self.SetOcupacion(self.GetOcupacion() - float(self.GetTopeValor().GetLongitud()))
             self.Desempilar()
 
     def Cercano(self):
         return self.GetTopeValor()
 
     def Cabe(self, vehiculo):
-        return ( self.GetCapacidad() - self.GetOcupacion() ) >= vehiculo.GetLongitud()
+        return ( self.GetCapacidad() - self.GetOcupacion() ) >= float(vehiculo.GetLongitud())
 
     def Existe(self, atributo, valor):
         
@@ -42,18 +58,18 @@ class Tubo(Pila):
         nodoAuxiliar = self.GetTopeNodo()
 
         while (existe == False):
-            if (atributo == "longitud") and (nodoAuxiliar.GetValor().GetLongitud() == valor):
+            if (atributo == "Longitud") and (nodoAuxiliar.GetValor().GetLongitud() == valor):
                 existe = True
-            elif (atributo == "placa") and (nodoAuxiliar.GetValor().GetPlaca() == valor):
+            elif (atributo == "Placa") and (nodoAuxiliar.GetValor().GetPlaca() == valor):
                 existe = True
-            elif (atributo == "modelo") and (nodoAuxiliar.GetValor().GetModelo() == valor):
+            elif (atributo == "Modelo") and (nodoAuxiliar.GetValor().GetModelo() == valor):
                 existe = True
-            elif (atributo == "anho") and (nodoAuxiliar.GetValor().GetAnho() == valor):
+            elif (atributo == "Anho") and (nodoAuxiliar.GetValor().GetAnho() == valor):
                 existe = True
-            elif (atributo == "color") and (nodoAuxiliar.GetValor().GetColor() == valor):
+            elif (atributo == "Color") and (nodoAuxiliar.GetValor().GetColor() == valor):
                 existe = True
             
-            if not(nodoAuxiliar.GetAnterior() == None) :
+            if nodoAuxiliar.GetAnterior() != None:
                 nodoAuxiliar = nodoAuxiliar.GetAnterior()
             else:
                 break

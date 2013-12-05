@@ -8,7 +8,17 @@ class Vehiculo(object):
         self.SetColor(color)
 
     def SetLongitud(self, longitud):
-        self.longitud = longitud
+        if longitud.find(",") != -1:
+            auxiliar = ""
+            for letra in longitud:
+                if letra == ",":
+                    auxiliar += "."
+                else:
+                    auxiliar += letra
+            self.longitud = auxiliar
+        else:
+            self.longitud = longitud
+        
 
     def SetPlaca(self, placa):
         self.placa = placa
