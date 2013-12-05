@@ -28,7 +28,7 @@ class Pila(object):
         return self.tope
 
     def Empilar(self, valor):
-        auxiliar = self.tope
+        auxiliar = self.GetTopeNodo()
         self.SetTope(NodoPila(valor))
         self.tope.SetAnterior(auxiliar)
     
